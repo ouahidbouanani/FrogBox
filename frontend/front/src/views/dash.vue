@@ -1,0 +1,36 @@
+<template>
+  <div>
+    <h1>Dashboard</h1>
+    <p>Bienvenue, {{ user?.nom }} !</p>
+    <button @click="logout">Déconnexion</button>
+  </div>
+</template>
+
+<script>
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+export default {
+  setup() {
+      const user = ref(null);
+      const router = useRouter();
+
+      onMounted(() => {
+          const userData = localStorage.getItem('user');
+          if (userData) {
+              user.value = JSON.parse(userData);
+          }
+      });
+
+      const logout = () => {
+          localStorage.removeItem('token'); 
+          localStorage.removeItem('user');  
+          router.push('/login'); 
+          setTimeout(() => {
+                window.location.reload(); // Force le rechargement pour bien réinitialiser l'état
+               }, 100);
+      };
+
+      return { user, logout };
+  }
+};
+</script>
