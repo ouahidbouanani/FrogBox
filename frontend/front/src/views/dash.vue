@@ -1,9 +1,7 @@
 <template>
-  <div>
     <h1>Dashboard</h1>
     <p>Bienvenue, {{ user?.nom }} !</p>
     <button @click="logout">Déconnexion</button>
-  </div>
 </template>
 
 <script>
@@ -27,7 +25,7 @@ export default {
           router.push('/login'); 
           setTimeout(() => {
                 window.location.reload(); // Force le rechargement pour bien réinitialiser l'état
-               }, 100);
+               }, 3000);
       };
 
       return { user, logout };
