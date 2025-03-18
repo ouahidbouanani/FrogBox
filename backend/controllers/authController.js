@@ -44,7 +44,7 @@ const login = async (req, res) => {
     const token = jwt.sign(
       { userId: user.id, email: user.email },
       SECRET_KEY,
-      { expiresIn: maxAge } // Token valide pour 2 heures
+      { expiresIn: maxAge } 
     );
     res.cookie("jwt", token, { httpOnly: true, maxAge });
     // Authentification réussie avec token

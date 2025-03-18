@@ -45,7 +45,9 @@
         </div>
       </div>
     </div>
-    {{errorMessage}}
+    <div  class= "error">
+    {{ errorMessage }}
+  </div>
   </template>
  <script>
  import axios from 'axios';
@@ -68,15 +70,18 @@
                  mot_de_passe: password.value
              })
              .then((response) => {
-                 if (response.status === 200) {
+                 if (response.status === 201) {
                      alert("Inscription réussie ! Vous pouvez maintenant vous connecter.");
-                     router.push('/login'); // Redirige vers la page de connexion
+                     router.push('/login');
                  } else {
-                     errorMessage.value = response.data;
+                     errorMessage.value = response.data.error;
                  }
              })
              .catch((error) => {
-                 errorMessage.value = error.response?.data || "Erreur lors de l'inscription.";
+                 errorMessage.value = error.response?.data.error || "Erreur lors de l'inscription.";
+                 setTimeout(() => {
+                    errorMessage.value = '';
+                }, 5000);
              });
          };
  
@@ -90,4 +95,14 @@
      }
  }
  </script>
+  <style scoped>
+  .error {
+    color: red;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+  }
+  </style>
  

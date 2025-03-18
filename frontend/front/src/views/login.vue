@@ -34,7 +34,9 @@
         </div>
       </div>
     </div>
-    {{errorMessage}}
+    <div v-if="errorMessage" class= "error">
+    {{ errorMessage }}
+  </div>
   </template>
   
   <script>
@@ -50,6 +52,7 @@ export default {
         const errorMessage = ref('');
         const router = useRouter();
 
+        
         const login = () => {
             axios.post('http://localhost:3000/login', {
                 email: email.value,
@@ -62,11 +65,17 @@ export default {
                     localStorage.setItem('user', response.data.user);
                     router.push('/dash');
                 } else if (response.status === 201) {
-                    errorMessage.value = response.data;
+                    errorMessage.value = response.data.error;
+                    setTimeout(() => {
+                        errorMessage.value = ''; // Effacer le message après 5 secondes
+                    }, 5000);
                 }
             })
             .catch((error) => {
-                errorMessage.value = error.response?.data || "Erreur lors de la connexion.";
+                errorMessage.value = error.response?.data.error || "Erreur lors de la connexion.";
+                setTimeout(() => {
+                    errorMessage.value = ''; // Effacer le message après 5 secondes
+                }, 5000);
             });
         };
 
@@ -84,4 +93,14 @@ export default {
     },
 }
   </script>
+  <style scoped>
+  .error {
+    color: red;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+  }
+  </style>
   
