@@ -1,31 +1,29 @@
 <template>
   <div class="container">
-  <h1 class="my-4">Fusionner des PDF</h1>
-  <input type="file" multiple @change="handleFileUpload" class="form-control mb-2" />
-  <button @click="mergePDFs" class="btn btn-success mb-4">Fusionner</button>
+    <h1 class="my-4">Fusionner des PDF</h1>
+    <input type="file" multiple @change="handleFileUpload" class="form-control mb-2" />
+    <button @click="mergePDFs" class="btn btn-success mb-4">Fusionner</button>
 
-  <h2>Fichiers sélectionnés :</h2>
-  <ul class="list-group mb-4">
-    <li v-for="(file, index) in files" :key="index" class="list-group-item d-flex justify-content-between align-items-center">
-      {{ file.name }}
-      <button @click="removeFile(index)" class="btn btn-danger btn-sm">Supprimer</button>
-    </li>
-  </ul>
-
-  <h1 class="my-4">Séparer un PDF</h1>
-  <input type="file" @change="handleFileUploadForSplit" class="form-control mb-2" />
-  <button @click="splitPDF" class="btn btn-success mb-4">Séparer</button>
-
-  <div v-if="message" class="alert alert-info mt-4">{{ message }}</div>
-
-  <div v-if="outputFiles.length" class="mt-4">
-    <h2>Fichiers générés :</h2>
-    <ul class="list-group">
-      <li v-for="file in outputFiles" :key="file" class="list-group-item">{{ file }}</li>
+    <h2>Fichiers sélectionnés :</h2>
+    <ul class="list-group mb-4">
+      <li v-for="(file, index) in files" :key="index" class="list-group-item d-flex justify-content-between align-items-center">
+        {{ file.name }}
+        <button @click="removeFile(index)" class="btn btn-danger btn-sm">Supprimer</button>
+      </li>
     </ul>
-  </div>
-</div>
 
+    <h1 class="my-4">Séparer un PDF</h1>
+    <input type="file" @change="handleFileUploadForSplit" class="form-control mb-2" />
+    
+    <div class="form-check mb-2">
+      <input type="checkbox" v-model="zipOption" class="form-check-input" id="zipOption" />
+      <label class="form-check-label" for="zipOption">Enregistrer les pages dans un fichier ZIP</label>
+    </div>
+
+    <button @click="splitPDF" class="btn btn-success mb-4">Séparer</button>
+
+    <div v-if="message" class="alert alert-info mt-4">{{ message }}</div>
+  </div>
 </template>
 
 <script>
@@ -38,6 +36,7 @@ export default {
     const splitFile = ref(null);
     const message = ref('');
     const outputFiles = ref([]);
+    const zipOption = ref(false); // Nouvelle variable pour l'option ZIP
 
     const handleFileUpload = (event) => {
       const newFiles = Array.from(event.target.files);
@@ -77,7 +76,7 @@ export default {
       formData.append('file', splitFile.value);
 
       try {
-        const response = await axios.post('http://localhost:5000/api/split', formData, {
+        const response = await axios.post(zipOption.value ? 'http://localhost:5000/api/splitzip' : 'http://localhost:5000/api/split', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -95,6 +94,7 @@ export default {
       splitFile,
       message,
       outputFiles,
+      zipOption,
       handleFileUpload,
       handleFileUploadForSplit,
       mergePDFs,
@@ -104,7 +104,6 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 /* Ajoutez ici vos styles CSS si nécessaire */
 </style>
