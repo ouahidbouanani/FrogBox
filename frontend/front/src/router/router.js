@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import login from '../views/login.vue'; // Assure-toi que le chemin est correct
 import register from '../views/register.vue'; // Assure-toi que le chemin est correct
 import dash from '../views/dash.vue'; // Assure-toi que le chemin est correct
+import pdf from '../views/pdf.vue';
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: '/register',
     name: 'register',
     component: register,
+  },
+  {
+    path: '/pdf',
+    name: 'pdf',
+    component: pdf,
   },
   {
     path: '/dash',
