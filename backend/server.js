@@ -5,11 +5,7 @@ const authRoutes = require('./routes/authRoutes');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const multer = require('multer');
-const fs = require('fs');
-const XLSX = require('xlsx');
-const upload = multer();
-const FILE_PATH = './uploads/form_data.xlsx';
+
 const db = require('./config/db');
 
 const allowedOrigins = [

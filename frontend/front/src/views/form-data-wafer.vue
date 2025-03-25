@@ -98,7 +98,7 @@
     { text: ' NICOLAS BIZ (Nicolas.biz@treefrog.fr)', value: 'Nicolas.biz@treefrog.fr' },
     { text: 'MARINE GARCIA (Marine.garcia@treefrog.fr)', value: 'Marine.garcia@treefrog.fr' },
     { text: 'Estelle PESCHER (estelle.pescher@treefrog.fr)', value: 'thomas.labat@treefrog.fr' }
-    // Ajoute d'autres utilisateurs si nécessaire
+    
   ];
 
   const userOptions = [
@@ -106,7 +106,7 @@
     { text: ' NICOLAS BIZ (Nicolas.biz@treefrog.fr)', value: 'Nicolas.biz@treefrog.fr' },
     { text: 'MARINE GARCIA (Marine.garcia@treefrog.fr)', value: 'Marine.garcia@treefrog.fr' },
     { text: 'Estelle PESCHER (estelle.pescher@treefrog.fr)', value: 'thomas.labat@treefrog.fr' }
-    // Ajoute d'autres utilisateurs si nécessaire
+    
   ];
 
   // Fonction pour soumettre le formulaire
