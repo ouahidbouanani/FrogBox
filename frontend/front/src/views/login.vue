@@ -53,31 +53,30 @@ export default {
         const router = useRouter();
 
         
-        const login = () => {
-            axios.post('http://localhost:3000/login', {
-                email: email.value,
-                mot_de_passe: password.value
-            })
-            
-            .then((response) => {
-                if (response.status === 200) {
-                    localStorage.setItem('token', response.data.token);
-                    localStorage.setItem('user', response.data.user);
-                    router.push('/dash');
-                } else if (response.status === 201) {
-                    errorMessage.value = response.data.error;
-                    setTimeout(() => {
-                        errorMessage.value = ''; // Effacer le message après 5 secondes
-                    }, 5000);
-                }
-            })
-            .catch((error) => {
-                errorMessage.value = error.response?.data.error || "Erreur lors de la connexion.";
-                setTimeout(() => {
-                    errorMessage.value = ''; // Effacer le message après 5 secondes
-                }, 5000);
-            });
-        };
+        const login = async () => {
+    try {
+        const response = await axios.post('http://localhost:3000/login', {
+            email: email.value,
+            mot_de_passe: password.value
+        });
+
+        if (response.status === 200) {
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.user)); // S'assurer que l'objet user est stocké en JSON
+            router.push('/dash');
+        } else if (response.status === 201) {
+            errorMessage.value = response.data.error;
+            setTimeout(() => {
+                errorMessage.value = '';
+            }, 5000);
+        }
+    } catch (error) {
+        errorMessage.value = error.response?.data.error || "Erreur lors de la connexion.";
+        setTimeout(() => {
+            errorMessage.value = '';
+        }, 5000);
+    }
+};
 
         return {
             email,

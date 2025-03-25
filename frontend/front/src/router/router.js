@@ -3,7 +3,11 @@ import login from '../views/login.vue'; // Assure-toi que le chemin est correct
 import register from '../views/register.vue'; // Assure-toi que le chemin est correct
 import dash from '../views/dash.vue'; // Assure-toi que le chemin est correct
 import pdf from '../views/pdf.vue';
-
+import formdatachip from '@/views/form-data-chip.vue';
+import smart from '@/views/smart.vue';
+import datachip from '@/views/data-chip.vue'
+import formdatawafer from '@/views/form-data-wafer.vue';
+import datawafer from '@/views/data-wafer.vue'
 const routes = [
   {
     path: '/login',
@@ -20,6 +24,32 @@ const routes = [
     name: 'pdf',
     component: pdf,
   },
+  {
+    path: '/smart',
+    name: 'smart',
+    component: smart,
+  },
+  {
+    path: '/form-data-chip',
+    name: 'form-data-chip',
+    component: formdatachip,
+  },
+  {
+    path: '/data-chip',
+    name: 'data-chip',
+    component: datachip,
+  },
+  {
+    path: '/form-data-wafer',
+    name: 'form-data-wafer',
+    component: formdatawafer,
+  },
+  {
+    path: '/data-wafer',
+    name: 'data-wafer',
+    component: datawafer,
+  },
+ 
   {
     path: '/dash',
     name: 'dash',
