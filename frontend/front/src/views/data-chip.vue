@@ -42,7 +42,7 @@ const techopsData = ref([]);
 // Fetch data from backend
 const fetchData = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/get-techops-data');
+    const response = await axios.get('http://localhost:3000/api/get-techops-data');
     techopsData.value = response.data;
   } catch (error) {
     console.error('Erreur lors de la récupération des données', error);

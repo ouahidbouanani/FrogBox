@@ -92,7 +92,7 @@
   
   const submitForm = async () => {
   try {
-    await axios.post('http://localhost:3000/data-chip', form.value);
+    await axios.post('http://localhost:3000/api/data-chip', form.value);
     alert('Données enregistrées avec succès !');
   } catch (error) {
     console.error('Erreur lors de l’envoi du formulaire', error);
