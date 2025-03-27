@@ -11,8 +11,8 @@
   
         <div class="col-md-3">
           <h5>RAW DATA</h5>
-          <router-link to="/data-chip" class="data-link">🗂️ 1 - DATA - TechOps Chip - SF</router-link> <br>
-          <router-link to="/data-wafer" class="data-link">🗂️ 2 - DATA - TechOps Chip - Finished</router-link>
+          <router-link to="/data-chip" class="data-link">🗂️ 1 - DATA - TechOps Chip </router-link> <br>
+          <router-link to="/data-wafer" class="data-link">🗂️ 2 - DATA - TechOps Wafer</router-link>
         </div>
       </div>
     </div>

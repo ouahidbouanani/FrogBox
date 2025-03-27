@@ -63,7 +63,7 @@ export default {
         if (response.status === 200) {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user)); // S'assurer que l'objet user est stocké en JSON
-            router.push('/dash');
+            router.push('/smart');
         } else if (response.status === 201) {
             errorMessage.value = response.data.error;
             setTimeout(() => {
