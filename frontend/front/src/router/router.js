@@ -14,6 +14,7 @@ import formdatawafer from '@/views/form-data-wafer.vue';
 import datawafer from '@/views/data-wafer.vue'
 import organizepdf from '@/views/organize-pdf.vue'
 import pdftoppt from '@/views/pdftoppt.vue';
+import ajoutnumero from '@/views/ajout-numero.vue'
 
 const routes = [
   {
@@ -70,6 +71,11 @@ const routes = [
     path: '/pdftoppt',
     name: 'pdftoppt',
     component: pdftoppt,
+  },
+  {
+    path: '/ajout-numero',
+    name: 'ajout-numero',
+    component: ajoutnumero,
   },
   {
     path: '/form-data-wafer',
