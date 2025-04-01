@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const techopsRoutes = require('./routes/techopsRoutes');
 const waferRoutes = require('./routes/waferRoutes');
+const passport = require('./config/passport');
 const cors = require('cors');
+const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -12,6 +14,7 @@ const db = require('./config/db');
 
 const allowedOrigins = [
   'http://localhost:5173',
+  'http://localhost:5174',
   'http://localhost:4173'
 ];
 
@@ -26,9 +29,12 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
-
+app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(bodyParser.json());
 app.use('/', authRoutes);
+
 
 // Utilisation des routes
 app.use('/api', techopsRoutes);

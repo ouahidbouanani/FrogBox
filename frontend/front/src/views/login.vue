@@ -28,12 +28,17 @@
   
             <button type="submit" class="btn btn-primary" >Se connecter</button>
           </form>
+          <br>
+          <a href="http://localhost:3000/auth/microsoft">
+                <button class="btn btn-primary">Se connecter avec Microsoft</button>
+            </a>
           <p class="mt-3" @click="navigateToRegister">
             Pas encore inscrit ? <router-link to="/register">S'inscrire</router-link>
           </p>
         </div>
       </div>
     </div>
+
     <div v-if="errorMessage" class= "error">
     {{ errorMessage }}
   </div>

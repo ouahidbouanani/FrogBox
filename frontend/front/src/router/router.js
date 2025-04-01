@@ -3,11 +3,18 @@ import login from '../views/login.vue'; // Assure-toi que le chemin est correct
 import register from '../views/register.vue'; // Assure-toi que le chemin est correct
 import dash from '../views/dash.vue'; // Assure-toi que le chemin est correct
 import pdf from '../views/pdf.vue';
+import Profile from '../views/Profile.vue';
 import formdatachip from '@/views/form-data-chip.vue';
 import smart from '@/views/smart.vue';
-import datachip from '@/views/data-chip.vue'
+import datachip from '@/views/data-chip.vue';
+import pdfimage from '@/views/pdf-image.vue';
+import pdfword from '@/views/pdf-word.vue';
+import pdfexcel from '@/views/pdf-excel.vue';
 import formdatawafer from '@/views/form-data-wafer.vue';
 import datawafer from '@/views/data-wafer.vue'
+import organizepdf from '@/views/organize-pdf.vue'
+import pdftoppt from '@/views/pdftoppt.vue';
+
 const routes = [
   {
     path: '/login',
@@ -40,6 +47,31 @@ const routes = [
     component: datachip,
   },
   {
+    path: '/pdf-image',
+    name: 'pdf-image',
+    component: pdfimage,
+  },
+  {
+    path: '/pdf-word',
+    name: 'pdf-word',
+    component: pdfword,
+  },
+  {
+    path: '/pdf-excel',
+    name: 'pdf-excel',
+    component: pdfexcel,
+  },
+  {
+    path: '/organize-pdf',
+    name: 'organize-pdf',
+    component: organizepdf,
+  },
+  {
+    path: '/pdftoppt',
+    name: 'pdftoppt',
+    component: pdftoppt,
+  },
+  {
     path: '/form-data-wafer',
     name: 'form-data-wafer',
     component: formdatawafer,
@@ -60,6 +92,7 @@ const routes = [
     path: '/',
     redirect: '/login', // Par défaut, redirige vers la page login
   },
+  { path: '/profile', component: Profile }
 ];
 
 const router = createRouter({
