@@ -12,39 +12,27 @@
         <div v-if="selectedFile && !downloadUrl" class="position-selector">
             <p>Position :</p>
             <div class="grid">
-                <button 
-                    @click="selectPosition('haut_gauche')" 
-                    class="pos-btn" 
-                    :class="{'selected': selectedPosition === 'haut_gauche'}"></button>
+                <button @click="selectPosition('haut_gauche')" class="pos-btn"
+                    :class="{ 'selected': selectedPosition === 'haut_gauche' }"></button>
 
-                <button 
-                    @click="selectPosition('haut_centre')" 
-                    class="pos-btn" 
-                    :class="{'selected': selectedPosition === 'haut_centre'}"></button>
+                <button @click="selectPosition('haut_centre')" class="pos-btn"
+                    :class="{ 'selected': selectedPosition === 'haut_centre' }"></button>
 
-                <button 
-                    @click="selectPosition('haut_droit')" 
-                    class="pos-btn" 
-                    :class="{'selected': selectedPosition === 'haut_droit'}"></button>
+                <button @click="selectPosition('haut_droit')" class="pos-btn"
+                    :class="{ 'selected': selectedPosition === 'haut_droit' }"></button>
 
                 <div class="disabled"></div>
                 <div class="disabled"></div>
                 <div class="disabled"></div>
 
-                <button 
-                    @click="selectPosition('bas_gauche')" 
-                    class="pos-btn" 
-                    :class="{'selected': selectedPosition === 'bas_gauche'}"></button>
+                <button @click="selectPosition('bas_gauche')" class="pos-btn"
+                    :class="{ 'selected': selectedPosition === 'bas_gauche' }"></button>
 
-                <button 
-                    @click="selectPosition('bas_centre')" 
-                    class="pos-btn" 
-                    :class="{'selected': selectedPosition === 'bas_centre'}"></button>
+                <button @click="selectPosition('bas_centre')" class="pos-btn"
+                    :class="{ 'selected': selectedPosition === 'bas_centre' }"></button>
 
-                <button 
-                    @click="selectPosition('bas_droit')" 
-                    class="pos-btn" 
-                    :class="{'selected': selectedPosition === 'bas_droit'}"></button>
+                <button @click="selectPosition('bas_droit')" class="pos-btn"
+                    :class="{ 'selected': selectedPosition === 'bas_droit' }"></button>
             </div>
         </div>
 
@@ -144,17 +132,23 @@ const downloadFile = () => {
 
 .position-selector .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Crée 3 colonnes */
-    grid-template-rows: auto auto; /* Crée 2 rangées */
-    gap: 10px; /* Espacement entre les éléments */
-    justify-items: center; /* Centrer les boutons horizontalement */
-    align-items: center; /* Centrer les boutons verticalement */
+    grid-template-columns: repeat(3, 1fr);
+    /* Crée 3 colonnes */
+    grid-template-rows: auto auto;
+    /* Crée 2 rangées */
+    gap: 10px;
+    /* Espacement entre les éléments */
+    justify-items: center;
+    /* Centrer les boutons horizontalement */
+    align-items: center;
+    /* Centrer les boutons verticalement */
 }
 
 .pos-btn {
     width: 50px;
     height: 50px;
-    background-color: #3498db; /* Couleur par défaut */
+    background-color: #3498db;
+    /* Couleur par défaut */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -162,17 +156,20 @@ const downloadFile = () => {
 }
 
 .pos-btn.selected {
-    background-color: #007bff; /* Couleur bleue pour la position sélectionnée */
+    background-color: #007bff;
+    /* Couleur bleue pour la position sélectionnée */
 }
 
 /* Style des boutons non sélectionnés */
 .pos-btn:not(.selected) {
-    background-color: #bdbdbd; /* Couleur uniforme pour les boutons non sélectionnés */
+    background-color: #bdbdbd;
+    /* Couleur uniforme pour les boutons non sélectionnés */
 }
 
 .disabled {
     width: 50px;
     height: 50px;
-    background-color: #ccc; /* Couleur grise pour les éléments désactivés */
+    background-color: #ccc;
+    /* Couleur grise pour les éléments désactivés */
 }
 </style>
