@@ -10,7 +10,7 @@
 
         <!-- Affichage du schéma de position après le téléchargement -->
         <div v-if="selectedFile && !downloadUrl" class="position-selector">
-            <p>Position :</p>
+            <p>Position:</p>
             <div class="grid">
                 <button @click="selectPosition('haut_gauche')" class="pos-btn"
                     :class="{ 'selected': selectedPosition === 'haut_gauche' }"></button>

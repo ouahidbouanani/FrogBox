@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import login from '../views/login.vue'; // Assure-toi que le chemin est correct
 import register from '../views/register.vue'; // Assure-toi que le chemin est correct
 import dash from '../views/dash.vue'; // Assure-toi que le chemin est correct
-import pdf from '../views/pdf.vue';
+import pdfmerge from '../views/pdf-merge.vue';
+import pdfsplit from '../views/pdf-split.vue';
 import Profile from '../views/Profile.vue';
 import formdatachip from '@/views/form-data-chip.vue';
 import smart from '@/views/smart.vue';
@@ -15,7 +16,7 @@ import datawafer from '@/views/data-wafer.vue'
 import organizepdf from '@/views/organize-pdf.vue'
 import pdftoppt from '@/views/pdftoppt.vue';
 import ajoutnumero from '@/views/ajout-numero.vue'
-
+import rotationpdf from '@/views/rotation_pdf.vue'
 const routes = [
   {
     path: '/login',
@@ -28,9 +29,14 @@ const routes = [
     component: register,
   },
   {
-    path: '/pdf',
-    name: 'pdf',
-    component: pdf,
+    path: '/pdf-merge',
+    name: 'pdfmerge',
+    component: pdfmerge,
+  },
+  {
+    path: '/pdf-split',
+    name: 'pdfsplit',
+    component: pdfsplit,
   },
   {
     path: '/smart',
@@ -71,6 +77,11 @@ const routes = [
     path: '/pdftoppt',
     name: 'pdftoppt',
     component: pdftoppt,
+  },
+  {
+    path: '/rotation-pdf',
+    name: 'rotation-pdf',
+    component: rotationpdf,
   },
   {
     path: '/ajout-numero',
