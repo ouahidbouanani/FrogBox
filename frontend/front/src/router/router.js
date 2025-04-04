@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import login from '../views/login.vue'; // Assure-toi que le chemin est correct
-import register from '../views/register.vue'; // Assure-toi que le chemin est correct
-import dash from '../views/dash.vue'; // Assure-toi que le chemin est correct
+import login from '../views/login.vue';
+import register from '../views/register.vue';
+import dash from '../views/dash.vue'; 
 import pdfmerge from '../views/pdf-merge.vue';
 import pdfsplit from '../views/pdf-split.vue';
 import Profile from '../views/Profile.vue';
@@ -107,7 +107,7 @@ const routes = [
   },
   {
     path: '/',
-    redirect: '/login', // Par défaut, redirige vers la page login
+    redirect: '/login', // Par défaut
   },
   { path: '/profile', component: Profile }
 ];

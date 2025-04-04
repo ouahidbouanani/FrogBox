@@ -1,4 +1,6 @@
 <template>
+  <Navbar/>
+  
   <div class="container">
     <h1 class="my-4">Fusionner des PDF</h1>
     <input type="file" multiple @change="handleFileUpload" class="form-control mb-2" />
@@ -25,8 +27,11 @@
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
-
+import Navbar from '@/components/Navbar.vue';
 export default {
+  components: {
+    Navbar 
+  },
   setup() {
     const files = ref([]);
     const message = ref('');

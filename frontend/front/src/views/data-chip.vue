@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
   <div class="container mt-4">
     <h2>Liste des données CHIP</h2>
     
@@ -35,6 +36,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import Navbar from '@/components/Navbar.vue';
 
 // Data
 const techopsData = ref([]);

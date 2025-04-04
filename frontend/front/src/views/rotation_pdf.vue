@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
-
+import Navbar from '@/components/Navbar.vue';
 const pdfFile = ref(null);
 const previewImage = ref(null);
 const rotation = ref(0);
@@ -53,6 +53,7 @@ const downloadPdf = async () => {
 </script>
 
 <template>
+  <Navbar/>
   <div class="container mt-5 text-center">
     <h2>PDF Rotate Tool</h2>
     <input type="file" class="form-control my-3" @change="uploadPdf" accept="application/pdf" />

@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
     <div class="container mt-4">
       <h2 >Liste des Données Wafer</h2>
   
@@ -34,7 +35,7 @@
   <script setup>
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
-  
+  import Navbar from '@/components/Navbar.vue';
   // Stockage des données
   const dataWafer = ref([]);
   

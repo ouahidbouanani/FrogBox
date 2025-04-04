@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
   <div class="container mt-5">
     <h1 class="text-center">Convertir PDF en Word</h1>
     <p class="text-center">Téléchargez un fichier PDF et convertissez-le en document Word.</p>
@@ -26,9 +27,11 @@
 
 <script>
 import { ref } from "vue";
-
+import Navbar from '@/components/Navbar.vue';
 export default {
-  name: "PdfToWordConverter",
+  components: {
+    Navbar 
+  },
   setup() {
     const fileInput = ref(null); // Référence au champ input
     const wordUrl = ref(null); // Stocke l'URL du fichier Word converti

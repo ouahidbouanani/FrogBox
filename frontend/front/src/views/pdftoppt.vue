@@ -1,4 +1,5 @@
 <template>
+    <Navbar/>
     <div class="container mt-5">
         <h2 class="text-center">Convertir PDF en PowerPoint</h2>
 
@@ -27,7 +28,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
-
+import Navbar from '@/components/Navbar.vue';
 const selectedFile = ref(null);
 const isLoading = ref(false);
 const conversionSuccess = ref(false);

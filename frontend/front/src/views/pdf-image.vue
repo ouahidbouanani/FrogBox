@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
   <div class="container mt-5">
     <h1 class="text-center">Convertir PDF en JPEG</h1>
     <p class="text-center">Téléchargez un fichier PDF et convertissez-le en images JPEG.</p>
@@ -23,7 +24,7 @@
 
 <script setup>
 import { ref } from 'vue';
-
+import Navbar from '@/components/Navbar.vue';
 const fileInput = ref(null); // Référence au champ input
 const zipUrl = ref(null); // Stocke l'URL du fichier ZIP contenant les images
 const zipFileName = ref(''); // Stocke le nom du fichier ZIP

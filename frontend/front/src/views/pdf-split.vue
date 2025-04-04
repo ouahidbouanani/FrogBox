@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
     <div class="container">
       <h1 class="my-4">Séparer un PDF</h1>
       <input type="file" @change="handleFileUploadForSplit" class="form-control mb-2" />
@@ -21,8 +22,11 @@
   <script>
   import { ref } from 'vue';
   import axios from 'axios';
-  
+  import Navbar from '@/components/Navbar.vue';
   export default {
+    
+   components: {
+    Navbar },
     setup() {
       const splitFile = ref(null);
       const message = ref('');

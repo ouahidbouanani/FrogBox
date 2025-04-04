@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
     <div class="container mt-4">
       <form @submit.prevent="submitForm">
         
@@ -62,6 +63,8 @@
 <script setup>
   import { ref } from 'vue';
   import axios from 'axios';
+  import Navbar from '@/components/Navbar.vue';
+  
   const form = ref({
     activity: '',
     qtyLaunch: '',
