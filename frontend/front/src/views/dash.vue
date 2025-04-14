@@ -24,7 +24,7 @@ export default {
           localStorage.removeItem('user');  
           router.push('/login'); 
           setTimeout(() => {
-                window.location.reload(); // Force le rechargement pour bien réinitialiser l'état
+                window.location.reload();
                }, 3000);
       };
 

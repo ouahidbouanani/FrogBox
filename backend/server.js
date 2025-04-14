@@ -4,6 +4,12 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const techopsRoutes = require('./routes/techopsRoutes');
 const waferRoutes = require('./routes/waferRoutes');
+const impressionRoutes = require('./routes/impressionRoutes')
+const finImpressionRoutes = require('./routes/finImpressionRoutes');
+const debutEtchingRoutes = require('./routes/debutEtchingRoutes');
+const priseCotesRoute = require('./routes/priseCotesRoute')
+const debutTomoRoutes = require('./routes/debutTomoRoutes');
+const finTomoRoutes = require('./routes/finTomoRoutes')
 const passport = require('./config/passport');
 const cors = require('cors');
 const session = require('express-session');
@@ -14,8 +20,6 @@ const db = require('./config/db');
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'http://localhost:5174',
-  'http://localhost:4173'
 ];
 
 app.use(cors({
@@ -39,6 +43,12 @@ app.use('/', authRoutes);
 // Utilisation des routes
 app.use('/api', techopsRoutes);
 app.use('/api', waferRoutes);
+app.use('/api/impression', impressionRoutes)
+app.use('/api/fin-impression', finImpressionRoutes);
+app.use('/api/debut-etching', debutEtchingRoutes);
+app.use('/api/debut-tomo', debutTomoRoutes);
+app.use('/api/fin-tomo', finTomoRoutes)
+app.use('/api', priseCotesRoute)
 app.listen(PORT, () => {
   console.log(`Serveur en cours d'exécution sur le port ${PORT}`);
 });

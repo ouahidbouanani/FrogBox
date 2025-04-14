@@ -22,15 +22,18 @@
     <!-- Message d'erreur ou de succès -->
     <div v-if="message" class="alert alert-info mt-4">{{ message }}</div>
   </div>
+  <Footer/>
 </template>
 
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
 import Navbar from '@/components/Navbar.vue';
+import Footer from '@/components/Footer.vue'
 export default {
   components: {
-    Navbar 
+    Navbar,
+    Footer 
   },
   setup() {
     const files = ref([]);

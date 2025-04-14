@@ -1,28 +1,65 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import login from '../views/login.vue';
-import register from '../views/register.vue';
-import dash from '../views/dash.vue'; 
-import pdfmerge from '../views/pdf-merge.vue';
-import pdfsplit from '../views/pdf-split.vue';
-import Profile from '../views/Profile.vue';
-import formdatachip from '@/views/form-data-chip.vue';
-import smart from '@/views/smart.vue';
-import datachip from '@/views/data-chip.vue';
-import pdfimage from '@/views/pdf-image.vue';
-import pdfword from '@/views/pdf-word.vue';
-import pdfexcel from '@/views/pdf-excel.vue';
-import formdatawafer from '@/views/form-data-wafer.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import login from '../views/login.vue'
+import register from '../views/register.vue'
+import dash from '../views/dash.vue'
+import pdfmerge from '../views/pdf-merge.vue'
+import pdfsplit from '../views/pdf-split.vue'
+import Profile from '../views/Profile.vue'
+import formdatachip from '@/views/form-data-chip.vue'
+import smart from '@/views/smart.vue'
+import datachip from '@/views/data-chip.vue'
+import pdfimage from '@/views/pdf-image.vue'
+import pdfword from '@/views/pdf-word.vue'
+import pdfexcel from '@/views/pdf-excel.vue'
+import formdatawafer from '@/views/form-data-wafer.vue'
 import datawafer from '@/views/data-wafer.vue'
 import organizepdf from '@/views/organize-pdf.vue'
-import pdftoppt from '@/views/pdftoppt.vue';
+import pdftoppt from '@/views/pdftoppt.vue'
 import ajoutnumero from '@/views/ajout-numero.vue'
 import rotationpdf from '@/views/rotation_pdf.vue'
+import DebutEtching from '@/views/from-semi/DebutEtching.vue'
+import DeclarationWafer from '@/views/from-semi/DeclarationWafer.vue'
+import FinImpression from '@/views/from-semi/FinImpression.vue'
+import PriseCotes from '@/views/from-semi/PriseCotes.vue'
+import DebutTomo from '@/views/from-semi/DebutTomo.vue'
+import FinTomo from '@/views/from-semi/FinTomo.vue'
 const routes = [
   {
     path: '/login',
     name: 'login',
     component: login,
   },
+  {
+    path: '/DebutEtching',
+    name: 'DebutEtching',
+    component: DebutEtching,
+  },
+  {
+    path: '/DeclarationWafer',
+    name: 'DeclarationWafer',
+    component: DeclarationWafer,
+  },
+  {
+    path: '/PriseCotes',
+    name: 'PriseCotes',
+    component: PriseCotes, 
+  },
+  {
+    path: '/DebutTomo',
+    name: 'DebutTomo',
+    component: DebutTomo, 
+  },
+  {
+    path: '/FinTomo',
+    name: 'FinTomo',
+    component: FinTomo, 
+  },
+  {
+    path: '/FinImpression',
+    name: 'FinImpression',
+    component: FinImpression, 
+  },
+
   {
     path: '/register',
     name: 'register',
