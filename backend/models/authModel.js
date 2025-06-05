@@ -19,6 +19,7 @@ const createUser  = (nom, email, mot_de_passe, callback) => {
     });
   });
 };
+
 const findUserByEmail = async (email) => {
   const sql = 'SELECT * FROM users WHERE email = ?';
   
@@ -26,7 +27,7 @@ const findUserByEmail = async (email) => {
     const [rows] = await db.promise().query(sql, [email]); 
     return rows; 
   } catch (error) {
-    throw error; // Propage l'erreur pour qu'elle soit gérée dans l'appelant.
+    throw error;
   }
 };
 

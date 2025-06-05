@@ -5,4 +5,7 @@ const finTomoController = require('../controllers/finTomoController')
 router.post('/add', finTomoController.create)
 router.get('/all', finTomoController.getAll)
 
+// Obtenir tous les lots disponibles depuis la table debut_etching
+router.get('/lots', finTomoController.getLots);
+
 module.exports = router
