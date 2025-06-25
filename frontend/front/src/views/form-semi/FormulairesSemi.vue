@@ -64,11 +64,11 @@ const forms = [
         path: "/formulaires-finis/FinTomo",
         icon: "bi bi-camera-reels-fill"
     },
-    {
-    name: "EtchingTable",
-    label: "Tableu",
-    path: "/Etching-Table",
-    icon: "bi bi-table"
+     {
+        name: "DeclarationNC",
+        label: "Déclaration NC",
+        path: "/formulaires-semi/declaration-nc",
+        icon: "bi bi-exclamation-circle"
     }
 ]
 </script>

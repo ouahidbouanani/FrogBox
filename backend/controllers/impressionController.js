@@ -40,7 +40,7 @@ exports.addImpression = (req, res) => {
         ON DUPLICATE KEY UPDATE current_step = 'nouvelle_impression'
       `;
 
-      db.query(updateStatusQuery, [id_lot], (err2) => {
+      db.query(updateStatusQuery, [id_lot, nbPieces], (err2) => {
         if (err2) {
           console.error('❌ Erreur lors de la mise à jour de lot_status:', err2);
           return res.status(500).json({ success: false, message: 'Erreur mise à jour lot_status' });

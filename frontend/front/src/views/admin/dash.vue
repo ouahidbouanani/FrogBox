@@ -38,7 +38,7 @@ import Layout from "@/components/layouts/layout.vue";
 const router = useRouter()
 
 const goToPieces = () => router.push('/detail-piece')
-const goToNC = () => router.push('/admin/nc')
+const goToNC = () => router.push('/formulaires-semi/gestion-nc')
 
 </script>
 

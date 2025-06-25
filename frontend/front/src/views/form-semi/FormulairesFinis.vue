@@ -24,9 +24,9 @@ import Layout from "@/components/layouts/layout.vue";
 
 const forms = [
     {
-        name: "NouveauLot",
-        label: "Nouveau Lot",
-        path: "/NouveauLot",
+        name: "Assemblage",
+        label: "Assemblage",
+        path: "/formulaires-finis/assemblage",
         icon: "bi bi-box-seam"
     },
     {

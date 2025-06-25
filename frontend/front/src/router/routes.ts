@@ -138,6 +138,18 @@ const authRoutes = [
         component: () => import("@/views/form-semi/FinTomo.vue"),
         meta: { authRequired: true }
     },
+    {
+        path: "/formulaires-semi/declaration-nc",
+        name: "DeclarationNC",
+        component: () => import("@/views/form-semi/declaration-nc.vue"),
+        meta: { authRequired: true }
+    },
+    {
+        path: "/formulaires-semi/gestion-nc",
+        name: "GestionNC",
+        component: () => import("@/views/form-semi/gestion-nc.vue"),
+        meta: { authRequired: true }
+    },
     
     {
         path: "/outils-pdf/outils-pdf",
@@ -240,7 +252,15 @@ const authRoutes = [
       name: 'Suivi',
       component: () => import('@/views/form-semi/suivi.vue'),
       meta: { authRequired: true }
-    }
+    },
+    //les routes pour les formilaires Finis commence ici 
+    {
+        path: "/formulaires-Finis/assemblage",
+        name: "Assemblage",
+        component: () => import("@/views/forms-finis/Assemblage.vue"),
+        meta: { authRequired: true }
+    },
+
 
 
 

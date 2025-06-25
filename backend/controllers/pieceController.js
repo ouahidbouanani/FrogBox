@@ -188,21 +188,31 @@ exports.updatePiece = (req, res) => {
 exports.deletePiece = (req, res) => {
   const pieceId = req.params.id;
 
-  const deleteQuery = 'DELETE FROM piece WHERE id = ?';
-
-  db.query(deleteQuery, [pieceId], (err, result) => {
+  // 1. Supprimer d'abord dans la table cote_piece
+  const deleteCotePieceQuery = 'DELETE FROM cote_piece WHERE piece_id = ?';
+  db.query(deleteCotePieceQuery, [pieceId], (err) => {
     if (err) {
-      console.error('Erreur suppression pièce:', err);
-      return res.status(500).json({ message: 'Erreur serveur' });
+      console.error('Erreur suppression dans cote_piece:', err);
+      return res.status(500).json({ message: 'Erreur serveur (cote_piece)' });
     }
 
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ message: 'Pièce non trouvée' });
-    }
+    // 2. Ensuite supprimer la pièce elle-même
+    const deletePieceQuery = 'DELETE FROM piece WHERE id = ?';
+    db.query(deletePieceQuery, [pieceId], (err, result) => {
+      if (err) {
+        console.error('Erreur suppression pièce:', err);
+        return res.status(500).json({ message: 'Erreur serveur (piece)' });
+      }
 
-    return res.status(200).json({ message: 'Pièce supprimée avec succès' });
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: 'Pièce non trouvée' });
+      }
+
+      return res.status(200).json({ message: 'Pièce et ses cotes supprimées avec succès' });
+    });
   });
 };
+
 
 // récupérer les tous les noms des pièces 
 exports.getTypePieces = (req, res) => {

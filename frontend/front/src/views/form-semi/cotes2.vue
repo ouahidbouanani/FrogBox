@@ -112,7 +112,7 @@ function buildChartData(nom_cote, values, toleranceMin, toleranceMax) {
   const minAdjusted = Math.min(toleranceMin, min) - Math.abs(min) * margin;
   const maxAdjusted = Math.max(toleranceMax, max) + Math.abs(max) * margin;
 
-  const color = '#007bff'; // couleur par défaut bleu
+  const color = '#007bff'; // couleur bleu
 
   return {
     data: {

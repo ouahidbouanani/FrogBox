@@ -138,7 +138,7 @@ function goBack() {
     router.back()
 }
 
-const operateurs = ['TLA', 'MPE', 'MGA', 'VGR', 'EPE', 'CME']
+
 const lots = ref([])
 
 const form = reactive({
