@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/finImpressionController');
+const controller = require('../../controllers/FormulairesSemi/finImpressionController');
 
 // Ajouter une nouvelle fin d'impression
 router.post('/', controller.dbInsertFinImpression);

@@ -3,20 +3,23 @@ const express = require('express');
 const bodyParser = require('body-parser');
 /*const authRoutes = require('./routes/authRoutes');*/
 const authRoutes = require('./routes/auth.Routes');
-const suiviRoutes = require("./routes/suiviRoutes");
-const impressionRoutes = require('./routes/impressionRoutes')
-const finImpressionRoutes = require('./routes/finImpressionRoutes');
-const debutEtchingRoutes = require('./routes/debutEtchingRoutes');
-const priseCotesRoute = require('./routes/priseCotesRoute')
-const debutTomoRoutes = require('./routes/debutTomoRoutes');
-const finTomoRoutes = require('./routes/finTomoRoutes');
+const suiviRoutes = require("./routes//FormsSemiRoutes/suiviRoutes");
+const impressionRoutes = require('./routes/FormsSemiRoutes/impressionRoutes')
+const finImpressionRoutes = require('./routes/FormsSemiRoutes/finImpressionRoutes');
+const debutEtchingRoutes = require('./routes/FormsSemiRoutes/debutEtchingRoutes');
+const priseCotesRoute = require('./routes/FormsSemiRoutes/priseCotesRoute')
+const debutTomoRoutes = require('./routes/FormsSemiRoutes/debutTomoRoutes');
+const debutTomoFinisRoute = require('./routes/FromsFinisRoutes/DebutTomoRoutes')
+const finTomoRoutes = require('./routes/FormsSemiRoutes/finTomoRoutes');
+const finTomoFinisRoutes = require ('./routes/FromsFinisRoutes/FinTomoRoutes')
 const assemblage = require('./routes/FromsFinisRoutes/AssemeblageRoute')
 //const passport = require('./config/passport');
-const cotesRoutes = require('./routes/cotesRoutes');
-const finEtchingRoutes = require('./routes/finEtchingRoutes');
+const cotesRoutes = require('./routes/FormsSemiRoutes/cotesRoutes');
+const finEtchingRoutes = require('./routes/FormsSemiRoutes/finEtchingRoutes');
+const denominationRoutes = require('./routes/FormsSemiRoutes/denominationRoutes')
 const pieceRoutes = require("./routes/pieceRoutes");
 const cors = require('cors');
-const ncRoutes = require('./routes/gestionNcRoutes');
+const ncRoutes = require('./routes/FormsSemiRoutes/gestionNcRoutes');
 const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -51,7 +54,8 @@ app.use('/api/impression', impressionRoutes)
 app.use('/api/fin-impression', finImpressionRoutes);
 app.use('/api/debut-etching', debutEtchingRoutes);
 app.use('/api/debut-tomo', debutTomoRoutes);
-app.use('/api/fin-tomo', finTomoRoutes)
+app.use('/api/fin-tomo', finTomoRoutes);
+app.use('/api/fin-tomo-finis', finTomoFinisRoutes)
 app.use('/api', priseCotesRoute)
 app.use('/api/cotes', cotesRoutes);
 app.use('/api/fin-etching', finEtchingRoutes);
@@ -60,6 +64,10 @@ app.use('/api/auth', authRoutes);
 app.use("/api", pieceRoutes);
 app.use("/api/assemblage",assemblage);
 app.use('/api', ncRoutes);
+app.use('/api/debut-tomo-finis', debutTomoFinisRoute)
+app.use('/api/denominations', denominationRoutes);
+
+
 
 app.listen(PORT, () => {
   console.log(`Serveur en cours d'exécution sur le port ${PORT}`);

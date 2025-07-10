@@ -1,4 +1,4 @@
-const db = require('../config/db'); // Assure-toi d’avoir un fichier db.js avec ta connexion MySQL
+const db = require('../../config/db'); 
 
 // POST - Déclarer une nouvelle non-conformité
 exports.declarerNc = (req, res) => {
@@ -104,3 +104,63 @@ exports.updateNc = (req, res) => {
     res.status(200).json({ message: 'NC mise à jour' });
   });
 };
+
+//** */
+exports.storeNcPieces = (req, res) => {
+  const { piece_info, lots_selections, operateur, date, commentaire = '' } = req.body;
+
+  if (!piece_info || !lots_selections || !operateur || !date) {
+    return res.status(400).json({ message: 'Données manquantes.' });
+  }
+
+  const insertData = [];
+
+  lots_selections.forEach(lot => {
+    const { id_lot, type_pieces, pieces_selectionnees } = lot;
+
+    if (Array.isArray(pieces_selectionnees)) {
+      pieces_selectionnees.forEach(id_piece => {
+        insertData.push([
+          id_lot,
+          id_piece,
+          operateur,
+          date,
+          piece_info.denomination,
+          piece_info.produit,
+          type_pieces,
+          piece_info.description,
+          commentaire,
+          '', // impact
+          '', // decision
+          '', // cause_racine
+          '', // action_corrective
+          'En attente', // statut
+          new Date(),
+          new Date()
+        ]);
+      });
+    }
+  });
+
+  if (insertData.length === 0) {
+    return res.status(400).json({ message: 'Aucune pièce à insérer.' });
+  }
+
+  const sql = `INSERT INTO nc_pieces (
+    id_lot, id_piece, operateur, date,
+    denomination, produit, type, description,
+    action, impact, decision, cause_racine,
+    action_corrective, statut, created_at, updated_at
+  ) VALUES ?`;
+
+  
+  db.query(sql, [insertData], (err, result) => {
+    if (err) {
+      console.error('Erreur insertion:', err);
+      return res.status(500).json({ message: 'Erreur enregistrement en base.' });
+    }
+    return res.status(201).json({ message: 'Pièces insérées avec succès', insertedRows: result.affectedRows });
+  });
+};
+
+

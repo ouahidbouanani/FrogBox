@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const controller  = require('../controllers/gestionNcController');
+const controller  = require('../../controllers/FormulairesSemi/gestionNcController');
 
 // POST - Déclarer une nouvelle NC
 router.post('/nc/add', controller.declarerNc);
+router.post('/nc/adds', controller.storeNcPieces);
 
 // GET - Obtenir toutes les NC
 router.get('/nc', controller.getAllNc);

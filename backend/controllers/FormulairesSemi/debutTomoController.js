@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const db = require('../../config/db');
 
 //inserer les données "Formulaire début Tomo"
 exports.create = (req, res) => {

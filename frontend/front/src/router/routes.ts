@@ -69,13 +69,13 @@ const authRoutes = [
     {
         path: "/cotes/:id_lot/:nb_passage",
         name: "cotes",
-        component: () => import("@/views/form-semi/cotes2.vue"),
+        component: () => import("@/views/form-semi/cotes.vue"),
         meta: { authRequired: true }
     },
     {
-        path: "/cotes2/:id_lot/:nb_passage",
+        path: "/cotes-2/:id_lot/:nb_passage",
         name: "cotes2",
-        component: () => import("@/views/form-semi/cotes.vue"),
+        component: () => import("@/views/form-semi/cotes2.vue"),
         meta: { authRequired: true }
     },
     {
@@ -236,6 +236,12 @@ const authRoutes = [
       meta: { authRequired: true }
     },
     {
+      path: '/admin/denomination',
+      name: 'denomination',
+      component: () => import('@/views/admin/Denominations.vue'),
+      meta: { authRequired: true }
+    },
+    {
       path: '/modifier-piece/:id',
       name: 'modifier-piece',
       component: () => import('@/views/admin/ModifierPiece.vue'),
@@ -258,6 +264,30 @@ const authRoutes = [
         path: "/formulaires-Finis/assemblage",
         name: "Assemblage",
         component: () => import("@/views/forms-finis/Assemblage.vue"),
+        meta: { authRequired: true }
+    },
+    {
+        path: "/formulaires-Finis/debut-tomo",
+        name: "debut-tomo-finis",
+        component: () => import("@/views/forms-finis/Debut-tomo.vue"),
+        meta: { authRequired: true }
+    },
+    {
+        path: "/formulaires-Finis/fin-tomo",
+        name: "fin-tomo-finis",
+        component: () => import("@/views/forms-finis/fin-tomo.vue"),
+        meta: { authRequired: true }
+    },
+    {
+        path: "/formulaires-Finis/debut-hydro",
+        name: "debut-hydro",
+        component: () => import("@/views/forms-finis/Debut-hydro.vue"),
+        meta: { authRequired: true }
+    },
+    {
+        path: "/formulaires-Finis/fin-hydro",
+        name: "fin-hydro",
+        component: () => import("@/views/forms-finis/Fin-hydro.vue"),
         meta: { authRequired: true }
     },
 

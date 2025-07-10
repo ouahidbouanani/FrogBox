@@ -1,7 +1,7 @@
 
 const express = require('express')
 const router = express.Router()
-const piecesController = require('../controllers/priseCotesController')
+const piecesController = require('../../controllers/FormulairesSemi/priseCotesController')
 
 router.get('/lots', piecesController.getLots)
 router.post('/pieces/submit', piecesController.submitPieces)

@@ -1,7 +1,7 @@
 // routes/debutEtchingRoutes.js
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/debutEtchingController');
+const controller = require('../../controllers/FormulairesSemi/debutEtchingController');
 
 // Récupérer les lots depuis la table fin_impression
 router.get('/lots', controller.getLots)

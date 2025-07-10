@@ -31,7 +31,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@/assets/scss/app-saas.scss';
 import '@/assets/scss/icons.scss';
 import 'vue-multiselect/dist/vue-multiselect.min.css'
-
+import PrimeVue from 'primevue/config';
 import { useAuthStore } from '@/stores/auth'; // 👈 IMPORT du store
 
 const app = createApp(App);
@@ -46,7 +46,8 @@ authStore.loadUserFromLocalStorage(); // 👈 C'EST CETTE LIGNE QUI MANQUAIT
 app.use(router);
 app.use(BootstrapVueNext);
 app.use(VueApexCharts);
-app.use(VueTheMask);
+
+app.use(PrimeVue);
 
 const MetaPlug: Plugin = {
   install: (app: any, options: any) => {

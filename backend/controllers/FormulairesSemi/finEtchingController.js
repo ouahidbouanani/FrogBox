@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const db = require('../../config/db');
 
 // récuperer les lots qui sont dans le début etching et qui les leur cotes sont déja prises s
 exports.getLots = (req, res) => {

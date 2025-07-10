@@ -30,21 +30,15 @@ const forms = [
         icon: "bi bi-box-seam"
     },
     {
-        name: "FinAssemblage",
-        label: "Fin Assemblage",
-        path: "/FinAssemblage",
-        icon: "bi bi-tools"
-    },
-    {
         name: "DebutTomo",
         label: "Début Tomo",
-        path: "/DebutTomo",
+        path: "/formulaires-Finis/debut-tomo",
         icon: "bi bi-camera-reels"
     },
     {
         name: "FinTomo",
         label: "Fin Tomo",
-        path: "/FinTomo",
+        path: "/formulaires-Finis/fin-tomo",
         icon: "bi bi-camera-reels-fill"
     },
     {

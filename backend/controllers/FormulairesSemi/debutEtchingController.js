@@ -1,4 +1,4 @@
-const db = require('../config/db')
+const db = require('../../config/db')
 
 // GET : Récupération des lots depuis la table fin_impression
 exports.getLots = (req, res) => {

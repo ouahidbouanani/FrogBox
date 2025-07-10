@@ -1,4 +1,4 @@
-const db = require('../config/db')
+const db = require('../../config/db')
 
 /*exports.create = (req, res) => {
     const { id_lot, quantite, date, heure, operateur } = req.body

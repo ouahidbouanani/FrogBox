@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const db = require('../../config/db');
 
 
 // Ajouter une fin d'impression + mise à jour de lot_status

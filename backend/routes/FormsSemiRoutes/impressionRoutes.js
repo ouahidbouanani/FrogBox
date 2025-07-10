@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const impressionController = require('../controllers/impressionController')
+const impressionController = require('../../controllers/FormulairesSemi/impressionController')
 
 // Routes
 router.post('/ajouter', impressionController.addImpression)

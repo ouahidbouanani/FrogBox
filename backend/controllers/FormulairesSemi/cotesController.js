@@ -1,4 +1,4 @@
-const db = require('../config/db'); 
+const db = require('../../config/db'); 
 
 
 //récuperer tous les les cotes a partir de son id et so, le nombre de passage 

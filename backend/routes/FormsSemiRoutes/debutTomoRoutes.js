@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const debutTomoController = require('../controllers/debutTomoController');
+const debutTomoController = require('../../controllers/FormulairesSemi/debutTomoController');
 
 // Enregistrer un début de tomographie
 router.post('/', debutTomoController.create);

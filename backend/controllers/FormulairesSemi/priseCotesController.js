@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const db = require('../../config/db');
 
 //  Récupération des lots disponible dans la table debut_etching , et les nombres de passage pour chaque lot 
 // et puis vérifier si ils sont diponible déja dans la table prise_de_cotes, et aussi récupérer le nombre de pièce imprimées dans la table fin_impression

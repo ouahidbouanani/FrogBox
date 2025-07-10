@@ -26,6 +26,17 @@
         </div>
       </div>
 
+      <!-- Gestion des NC -->
+      <div class="col-md-4 mb-4">
+        <div class="card text-center shadow h-100">
+          <div class="card-body">
+            <h5 class="card-title"> Gestion des dénominations </h5>
+            <p class="card-text">Consulter et ajouter une dénomination. </p>
+            <button class="btn btn-success" @click="goToDenomination">Accéder</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
   </Layout>
@@ -38,6 +49,7 @@ import Layout from "@/components/layouts/layout.vue";
 const router = useRouter()
 
 const goToPieces = () => router.push('/detail-piece')
+const goToDenomination =() =>router.push('/admin/denomination')
 const goToNC = () => router.push('/formulaires-semi/gestion-nc')
 
 </script>

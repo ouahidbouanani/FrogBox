@@ -41,6 +41,11 @@
                             <i class="uil-apps"></i> Data
                         </RouterLink>
                     </li>
+                    <li class="nav-item">
+                        <RouterLink to="/dash" class="nav-link">
+                            <i class="uil-user-circle"></i> dash
+                        </RouterLink>
+                    </li>
 
                 </ul>
             </div>
