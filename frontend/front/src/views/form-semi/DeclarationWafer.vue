@@ -17,7 +17,7 @@
                     <div class="col-sm-9">
                         <select class="form-select" v-model="form.activity" required>
                             <option disabled value=""> Sélectionner </option>
-                            <option v-for="item in options.activity" :key="item" :value="item">{{ item }}</option>
+                            <option v-for="item in options.activity" :key="item.nom" :value="item.nom">{{ item.nom }}</option>
                         </select>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                     <div class="col-sm-9">
                         <select class="form-select" v-model="form.imprimante" required>
                             <option disabled value=""> Sélectionner </option>
-                            <option v-for="item in options.imprimante" :key="item" :value="item">{{ item }}</option>
+                            <option v-for="item in options.imprimante" :key="item.nom" :value="item.nom">{{ item.nom }}</option>
                         </select>
                     </div>
                 </div>
@@ -134,23 +134,44 @@ const form = reactive({
 })
 
 const options = reactive({
-  activity: ['PROD', 'PQA', 'NOS', 'DEV'],
+  activity: [],
   typePieces: [],
   versionPiece: ['A00', 'B01', 'C02'],
-  imprimante: ['M031', 'M046'],
+  imprimante: [],
 })
 // récuperer le type de pièce dès que le lot est choisi 
 onMounted(() => {
+    // Récupérer les types de pièces
     axios.get('http://localhost:3000/api/types')
         .then(response => {
             options.typePieces = response.data
-            console.log(options.typePieces)
         })
         .catch(error => {
             console.error("Erreur lors du chargement des types de pièces :", error)
             alert("Impossible de charger les types de pièces depuis le serveur.")
         })
+
+    // Récupérer les imprimantes
+    axios.get('http://localhost:3000/api/config/imprimantes')
+        .then(response => {
+            options.imprimante = response.data
+        })
+        .catch(error => {
+            console.error("Erreur lors du chargement des imprimantes :", error)
+            alert("Impossible de charger les imprimantes depuis le serveur.")
+        })
+
+    // Récupérer les activités
+    axios.get('http://localhost:3000/api/config/activites')
+        .then(response => {
+            options.activity = response.data
+        })
+        .catch(error => {
+            console.error("Erreur lors du chargement des activités :", error)
+            alert("Impossible de charger les activités depuis le serveur.")
+        })
 })
+
 
 function submitForm() {
     if (!form.nbPieces || form.nbPieces < 1) {

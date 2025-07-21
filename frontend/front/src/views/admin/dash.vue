@@ -36,6 +36,16 @@
           </div>
         </div>
       </div>
+      <!-- Gestion des Activités & Imprimantes-->
+      <div class="col-md-4 mb-4">
+        <div class="card text-center shadow h-100">
+          <div class="card-body">
+            <h5 class="card-title">Activités & Imprimantes </h5>
+            <p class="card-text">Consulter et ajouter une activité ou une imprimante </p>
+            <button class="btn btn-success" @click="goToAc">Accéder</button>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -51,7 +61,7 @@ const router = useRouter()
 const goToPieces = () => router.push('/detail-piece')
 const goToDenomination =() =>router.push('/admin/denomination')
 const goToNC = () => router.push('/formulaires-semi/gestion-nc')
-
+const goToAc = () => router.push('/formulaires-Finis/fin-hydro')
 </script>
 
 <style scoped>

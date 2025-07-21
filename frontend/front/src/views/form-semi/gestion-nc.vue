@@ -27,11 +27,15 @@
         <b-form-group label="Produit"><b-form-input :model-value="selectedRow[6]" disabled /></b-form-group>
         <b-form-group label="Description"><b-form-input :model-value="selectedRow[7]" disabled /></b-form-group>
         <b-form-group label="Type"><b-form-input :model-value="selectedRow[8]" disabled /></b-form-group>
-        <b-form-group label="Proud"><b-form-input :model-value="selectedRow[9]" disabled /></b-form-group>
+        <b-form-group label="Type de production"><b-form-input :model-value="selectedRow[9]" disabled /></b-form-group>
 
         <!-- Champs modifiables -->
-        <b-form-group label="Action"><b-form-input v-model="editForm.action" /></b-form-group>
-        <b-form-group label="Impact"><b-form-input v-model="editForm.impact" /></b-form-group>
+        <b-form-group label="Cause Racine"><b-form-input v-model="editForm.cause_racine" /></b-form-group>
+        <b-form-group label="Justification"><b-form-textarea v-model="editForm.justification" rows="3" /></b-form-group>
+        <b-form-group label="Lien (rapport)"><b-form-input v-model="editForm.lien" /></b-form-group>
+        <b-form-group label="Statut">
+          <b-form-select v-model="editForm.statut" :options="statutOptions" />
+        </b-form-group>
         <b-form-group label="Décision">
           <b-form-select v-model="editForm.decision" required>
             <option disabled value="">Choisir une décision</option>
@@ -39,12 +43,6 @@
             <option value="Rebut">Rebut</option>
             <option value="Isolement">Isolement</option>
           </b-form-select>
-        </b-form-group>
-
-        <b-form-group label="Cause Racine"><b-form-input v-model="editForm.cause_racine" /></b-form-group>
-        <b-form-group label="Action Corrective"><b-form-input v-model="editForm.action_corrective" /></b-form-group>
-        <b-form-group label="Statut">
-          <b-form-select v-model="editForm.statut" :options="statutOptions" />
         </b-form-group>
       </b-form>
     </b-modal>
@@ -69,21 +67,20 @@ interface NcRow {
   produit: string
   description: string
   type: string
-  proud: string
-  action: string
-  impact: string
-  decision: string
+  type_de_production: string
   cause_racine: string
-  action_corrective: string
+  justification: string
+  lien: string
   statut: string
+  decision: string
 }
 
 const ncData = ref<any[][]>([])
 
 const ncTableHeaders = [
   'ID', 'ID Lot', 'ID Pièce', 'Opérateur', 'Date',
-  'Dénomination', 'Produit', 'Description', 'Type', 'Proud',
-  'Action', 'Impact', 'Cause Racine', 'Action Corrective', 'Statut', 'Décision'
+  'Dénomination', 'Produit', 'Description', 'Type', 'Type de production',
+  'Cause Racine', 'Justification', 'Lien', 'Statut', 'Décision'
 ]
 
 function statutToBadge(statut: string) {
@@ -104,7 +101,7 @@ const fixedColumnsDatatableOptions = ref({
   order: [[4, 'desc']],
   columnDefs: [
     {
-      targets: 14, // colonne Statut
+      targets: 13, // colonne Statut
       render: function (data: string) {
         return data
       }
@@ -133,11 +130,10 @@ const showEditModal = ref(false)
 const selectedRow = ref<any[]>([])
 
 const editForm = ref({
-  action: '',
-  impact: '',
+  justification: '',
+  lien: '',
   decision: '',
   cause_racine: '',
-  action_corrective: '',
   statut: '',
 })
 
@@ -145,12 +141,11 @@ const statutOptions = ['En cours', 'Clôturé', 'Traité']
 
 function openEditModal(row: any[]) {
   selectedRow.value = row
-  editForm.value.action = row[10]
-  editForm.value.impact = row[11]
-  editForm.value.decision = row[15]
-  editForm.value.cause_racine = row[12]
-  editForm.value.action_corrective = row[13]
-  editForm.value.statut = row[14]?.replace(/<[^>]+>/g, '') || ''
+  editForm.value.cause_racine = row[10]
+  editForm.value.justification = row[11]
+  editForm.value.lien = row[12]
+  editForm.value.statut = row[13]?.replace(/<[^>]+>/g, '') || ''
+  editForm.value.decision = row[14]
   showEditModal.value = true
 }
 
@@ -172,11 +167,10 @@ async function fetchNcData() {
       item.produit,
       item.description,
       item.type,
-      item.proud,
-      item.action || '',
-      item.impact || '',
+      item.type_de_production,
       item.cause_racine || '',
-      item.action_corrective || '',
+      item.justification || '',
+      item.lien || '',
       statutToBadge(item.statut || ''),
       item.decision || '',
     ])
@@ -189,11 +183,10 @@ async function saveModifications() {
   try {
     const id = selectedRow.value[0]
     await axios.put(`http://localhost:3000/api/nc/${id}`, {
-      action: editForm.value.action,
-      impact: editForm.value.impact,
+      justification: editForm.value.justification,
+      lien: editForm.value.lien,
       decision: editForm.value.decision,
       cause_racine: editForm.value.cause_racine,
-      action_corrective: editForm.value.action_corrective,
       statut: editForm.value.statut,
     })
     showEditModal.value = false

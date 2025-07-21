@@ -87,17 +87,15 @@ exports.getNcById = (req, res) => {
 exports.updateNc = (req, res) => {
   const id = req.params.id;
   const {
-    action, impact, decision, cause_racine,
-    action_corrective, statut
+     decision, cause_racine, statut, justification, lien
   } = req.body;
 
   const sql = `
     UPDATE nc_pieces SET 
-      action = ?, impact = ?, decision = ?, 
-      cause_racine = ?, action_corrective = ?, statut = ? 
+       decision = ?, cause_racine = ?, statut = ?, justification = ?, lien = ? 
     WHERE id = ?
   `;
-  const values = [action, impact, decision, cause_racine, action_corrective, statut, id];
+  const values = [decision, cause_racine,  statut, justification, lien, id];
 
   db.query(sql, values, (err, result) => {
     if (err) return res.status(500).json({ error: err });
@@ -127,13 +125,13 @@ exports.storeNcPieces = (req, res) => {
           date,
           piece_info.denomination,
           piece_info.produit,
+          '',
           type_pieces,
           piece_info.description,
           commentaire,
-          '', // impact
           '', // decision
-          '', // cause_racine
-          '', // action_corrective
+          '', // justification
+          '', // lien
           'En attente', // statut
           new Date(),
           new Date()
@@ -148,9 +146,9 @@ exports.storeNcPieces = (req, res) => {
 
   const sql = `INSERT INTO nc_pieces (
     id_lot, id_piece, operateur, date,
-    denomination, produit, type, description,
-    action, impact, decision, cause_racine,
-    action_corrective, statut, created_at, updated_at
+    denomination,produit, type_de_production, type, description,
+    justification, lien, decision, cause_racine,
+     statut, created_at, updated_at
   ) VALUES ?`;
 
   
