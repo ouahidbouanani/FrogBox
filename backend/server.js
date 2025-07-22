@@ -19,7 +19,7 @@ const finEtchingRoutes = require('./routes/FormsSemiRoutes/finEtchingRoutes');
 const denominationRoutes = require('./routes/FormsSemiRoutes/denominationRoutes')
 const pieceRoutes = require("./routes/pieceRoutes");
 const systemConfigRoutes = require('./routes/systemConfigRoutes');
-
+const versionPieceRoutes = require('./routes/versionPieceRoutes');
 const cors = require('cors');
 const ncRoutes = require('./routes/FormsSemiRoutes/gestionNcRoutes');
 const session = require('express-session');
@@ -70,6 +70,8 @@ app.use('/api/debut-tomo-finis', debutTomoFinisRoute)
 app.use('/api/denominations', denominationRoutes);
 app.use('/api/config', systemConfigRoutes);
 
+
+app.use('/api/versions', versionPieceRoutes);
 
 
 

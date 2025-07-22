@@ -64,12 +64,7 @@ const forms = [
         path: "/formulaires-finis/FinTomo",
         icon: "bi bi-camera-reels-fill"
     },
-     {
-        name: "DeclarationNC",
-        label: "Déclaration NC",
-        path: "/formulaires-semi/declaration-nc",
-        icon: "bi bi-exclamation-circle"
-    }
+     
 ]
 </script>
 

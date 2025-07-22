@@ -32,6 +32,7 @@
                         <template #default>
                             <router-link to="/formulaires-semi" class="dropdown-item side-nav-link-ref">Formulaires Semi finis</router-link>
                             <router-link to="/formulaires-finis" class="dropdown-item side-nav-link-ref">Formulaires Finis</router-link>
+                            <router-link to="/formulaires-semi/declaration-nc" class="dropdown-item side-nav-link-ref">Déclaration NC</router-link>
                         </template>
 
                     </b-dropdown>

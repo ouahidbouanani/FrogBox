@@ -27,11 +27,12 @@
               Nom Pièce
               <span v-if="sortKey === 'nom'">{{ sortAsc ? '▲' : '▼' }}</span>
             </th>
+            <th>Version</th>
             <th @click="sortBy('nb_cotes')" style="cursor: pointer">
               Nb Côtés
               <span v-if="sortKey === 'nb_cotes'">{{ sortAsc ? '▲' : '▼' }}</span>
             </th>
-            <th>Nom Côté</th>
+            <th>Nom Côte</th>
             <th>Tol. Min</th>
             <th>Tol. Max</th>
             <th>Actions</th>
@@ -42,6 +43,7 @@
             <tr v-for="(cote, i) in piece.cotes" :key="i">
               <template v-if="i === 0">
                 <td :rowspan="piece.cotes.length" class="align-middle">{{ piece.nom }}</td>
+                <td :rowspan="piece.cotes.length" class="align-middle">{{ piece.version }}</td> 
                 <td :rowspan="piece.cotes.length" class="align-middle">{{ piece.nb_cotes }}</td>
               </template>
               <td>{{ cote.nom_cote }}</td>
